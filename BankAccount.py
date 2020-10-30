@@ -33,5 +33,16 @@ class BankAccount:
         print(f"Your Balance is: ${self.balance}")
         return self.balance
 
+    """ Adds interest to users balance """
+
+    def add_interest(self):
+        interest = self.balance * 0.00083
+        self.balance += interest  
+
+
 salo = BankAccount()
 salo.get_balance()
+salo.deposit(1000)
+salo.add_interest()
+salo.get_balance()
+salo.withdraw(900)
