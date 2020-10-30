@@ -27,5 +27,11 @@ class BankAccount:
             self.balance -= 10
             print(f'New Balance: ${self.balance}')
 
+    """ Prints a friendly message about balance and returns balance"""
+
+    def get_balance(self):
+        print(f"Your Balance is: ${self.balance}")
+        return self.balance
+
 salo = BankAccount()
-salo.withdraw(3)
+salo.get_balance()
