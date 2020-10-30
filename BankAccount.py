@@ -1,12 +1,13 @@
 from random import randint
 
 class BankAccount:
-    balance = 0.00
-    routing_number = 123456789
-    account_number = randint(100000000,999999999)
+    
     """ Initializes Bank Account with Attributes """
-    def __innit__(self, full_name):
+    def __init__(self, full_name):
         self.full_name = full_name
+        self.balance = 0.00
+        self.routing_number = 123456789
+        self.account_number = randint(100000000, 999999999)
         
     
     """ Adds a deposit function to edit the balance """
@@ -24,7 +25,7 @@ class BankAccount:
             print(f'New Balance: ${self.balance}')
         else:
             print("You did not have enough funds. You will now be hit with an overdraft fee of $10")
-            self.balance -= 10
+            self.balance -= amount + 10
             print(f'New Balance: ${self.balance}')
 
     """ Prints a friendly message about balance and returns balance"""
@@ -39,10 +40,42 @@ class BankAccount:
         interest = self.balance * 0.00083
         self.balance += interest  
 
+    """ Prints a receipt containing information """
 
-salo = BankAccount()
+    def print_receipt(self):
+        print(self.full_name)
+        print(f'Account No.: {self.account_number}')
+        print(f'Routing No.: {self.routing_number}')
+        print(f'Balance: ${self.balance}')
+
+salo = BankAccount("Salomon Cohen")
 salo.get_balance()
+print("------------------")
 salo.deposit(1000)
+print("------------------")
 salo.add_interest()
+
 salo.get_balance()
+print("------------------")
 salo.withdraw(900)
+print("------------------")
+salo.print_receipt()
+print("------------------")
+
+starlight = BankAccount("Starlight")
+starlight.print_receipt()
+print("------------------")
+starlight.deposit(15)
+print("------------------")
+starlight.withdraw(20)
+print("------------------")
+starlight.print_receipt()
+print("------------------")
+
+
+Joi = BankAccount("Joi is Awesome")
+Joi.deposit(10000000)
+print("------------------")
+Joi.add_interest()
+Joi.print_receipt()
+print("------------------")
