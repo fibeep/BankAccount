@@ -8,6 +8,7 @@ class BankAccount:
         self.balance = 0.00
         self.routing_number = 123456789
         self.account_number = randint(100000000, 999999999)
+        self.display_number = ""
         
     
     """ Adds a deposit function to edit the balance """
@@ -24,7 +25,7 @@ class BankAccount:
             print(f'Amount Widrawn: ${amount}')
             print(f'New Balance: ${self.balance}')
         else:
-            print("You did not have enough funds. You will now be hit with an overdraft fee of $10")
+            print(f"You did not have enough funds to withdraw ${amount}. You will now be hit with an overdraft fee of $10")
             self.balance -= amount + 10
             print(f'New Balance: ${self.balance}')
 
@@ -40,13 +41,28 @@ class BankAccount:
         interest = self.balance * 0.00083
         self.balance += interest  
 
+    """  Generates a Displayable Acct Number """
+
+    def display_num(self):
+
+        acc_num = range(len(str(self.account_number)))
+
+        for i in acc_num:
+            if i <= 4:
+                self.display_number += "*"
+            else:
+                self.display_number += str(self.account_number)[i]
+
     """ Prints a receipt containing information """
 
     def print_receipt(self):
         print(self.full_name)
-        print(f'Account No.: {self.account_number}')
+        self.display_num()
+        print(f'Account No.: {self.display_number}')
         print(f'Routing No.: {self.routing_number}')
         print(f'Balance: ${self.balance}')
+
+
 
 salo = BankAccount("Salomon Cohen")
 salo.get_balance()
